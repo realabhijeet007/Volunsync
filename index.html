@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VolunSync - Smart Volunteer Coordination</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="background">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="cursor-glow cursor-cyan"></div>
+    <div class="cursor-glow cursor-violet"></div>
+    <div class="noise-layer"></div>
+  </div>
+
+  <header class="hero">
+    <nav class="navbar container">
+      <div class="logo">VolunSync</div>
+      <div class="nav-links">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#features">Features</a>
+        <a href="#assignment">Assignment</a>
+      </div>
+    </nav>
+
+    <div class="hero-content container">
+      <div class="hero-text">
+        <span class="badge">Smart Volunteer Coordination</span>
+        <h1>Connect the right volunteers to the right causes.</h1>
+        <p>
+          VolunSync helps NGOs and communities manage volunteers, assign tasks,
+          prioritize urgent events, and coordinate efficiently.
+        </p>
+        <div class="hero-buttons">
+          <a href="#dashboard" class="btn primary">Explore Dashboard</a>
+          <a href="#features" class="btn secondary">See Features</a>
+        </div>
+
+        <div class="hero-features">
+          <div class="mini-card">Volunteer Pool</div>
+          <div class="mini-card">Task Matching</div>
+          <div class="mini-card">Location Aware</div>
+          <div class="mini-card">Fast Coordination</div>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="glass-card">
+          <h3>Live Assignment</h3>
+          <p>Auto-matching volunteers to urgent tasks</p>
+          <div class="status-card green">Medical Camp → First Aid → 2 assigned</div>
+          <div class="status-card cyan">Food Drive → Food Distribution → 1 assigned</div>
+          <div class="status-card violet">Teaching Drive → Teaching → 1 assigned</div>
+        </div>
+
+        <div class="glass-card">
+          <h3>Impact Snapshot</h3>
+          <p>At-a-glance coordination metrics</p>
+          <div class="impact-grid">
+            <div class="impact-box"><strong>120+</strong><span>Volunteers</span></div>
+            <div class="impact-box"><strong>24</strong><span>Active Tasks</span></div>
+            <div class="impact-box"><strong>92%</strong><span>Assignment Rate</span></div>
+            <div class="impact-box"><strong>15</strong><span>NGO Partners</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="dashboard">
+    <section class="stats-section">
+      <div class="stat-card">
+        <h2 id="totalVolunteers">4</h2>
+        <p>Total Volunteers</p>
+      </div>
+      <div class="stat-card">
+        <h2 id="totalTasks">3</h2>
+        <p>Total Tasks</p>
+      </div>
+      <div class="stat-card">
+        <h2 id="assignedCount">0</h2>
+        <p>Assigned</p>
+      </div>
+      <div class="stat-card">
+        <h2 id="pendingTasks">3</h2>
+        <p>Pending Tasks</p>
+      </div>
+    </section>
+
+    <section id="features" class="tabs-section">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="volunteers">Volunteers</button>
+        <button class="tab-btn" data-tab="tasks">Tasks</button>
+        <button class="tab-btn" data-tab="assignment">Assignment</button>
+      </div>
+
+      <!-- Volunteers -->
+      <div class="tab-content active" id="volunteers">
+        <div class="grid-two">
+          <div class="panel">
+            <h3>Add Volunteer</h3>
+            <p>Register a volunteer into the coordination pool</p>
+            <form id="volunteerForm">
+              <input type="text" id="volName" placeholder="Enter name" required />
+              <input type="text" id="volContact" placeholder="Phone / Email" required />
+
+              <select id="volSkill">
+                <option>First Aid</option>
+                <option>Teaching</option>
+                <option>Food Distribution</option>
+                <option>Crowd Control</option>
+                <option>Logistics</option>
+              </select>
+
+              <select id="volAvailability">
+                <option>Available</option>
+                <option>Busy</option>
+              </select>
+
+              <select id="volLocation">
+                <option>South Kolkata</option>
+                <option>North Kolkata</option>
+                <option>Central Kolkata</option>
+                <option>Salt Lake</option>
+                <option>Howrah</option>
+              </select>
+
+              <button type="submit" class="btn primary full">Register Volunteer</button>
+            </form>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h3>Volunteer Directory</h3>
+                <p>Search by name, skill, or location</p>
+              </div>
+              <input type="text" id="searchInput" placeholder="Search volunteers" />
+            </div>
+            <div id="volunteerList" class="list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tasks -->
+      <div class="tab-content" id="tasks">
+        <div class="grid-two">
+          <div class="panel">
+            <h3>Create Task</h3>
+            <p>Add a new volunteering requirement</p>
+            <form id="taskForm">
+              <input type="text" id="taskTitle" placeholder="Enter task title" required />
+
+              <select id="taskSkill">
+                <option>First Aid</option>
+                <option>Teaching</option>
+                <option>Food Distribution</option>
+                <option>Crowd Control</option>
+                <option>Logistics</option>
+              </select>
+
+              <input type="number" id="taskNeeded" min="1" value="1" required />
+
+              <select id="taskLocation">
+                <option>South Kolkata</option>
+                <option>North Kolkata</option>
+                <option>Central Kolkata</option>
+                <option>Salt Lake</option>
+                <option>Howrah</option>
+              </select>
+
+              <input type="date" id="taskDate" required />
+
+              <select id="taskPriority">
+                <option>High</option>
+                <option selected>Medium</option>
+                <option>Low</option>
+              </select>
+
+              <button type="submit" class="btn primary full">Create Task</button>
+            </form>
+          </div>
+
+          <div class="panel">
+            <h3>Task Board</h3>
+            <p>Current tasks waiting for allocation</p>
+            <div id="taskList" class="list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Assignment -->
+      <div class="tab-content" id="assignment">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h3>Smart Assignment Engine</h3>
+              <p>Assign volunteers based on skill, availability, location, and priority</p>
+            </div>
+            <button id="assignBtn" class="btn primary">Assign Automatically</button>
+          </div>
+          <div id="assignmentList" class="assignment-grid"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
